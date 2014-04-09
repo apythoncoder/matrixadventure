@@ -5,11 +5,11 @@ colorama.init()
 
 #Make a clear screen with timer.
 def clearScreen(wait):
-	time.sleep(wait)
-	if sys.platform == 'win32' or  sys.platform == 'cygwin'
-		os.system('cls')
-	else:
-		os.system('clear')
+    time.sleep(wait)
+    if sys.platform == 'win32' or  sys.platform == 'cygwin'
+        os.system('cls')
+    else:
+        os.system('clear')
 class colour:
     Title = '\033[94m'
     Green = '\033[92m'
@@ -38,18 +38,18 @@ knife = False
 
 
 def noGo(room):
- 	print colour.Red + "There's no door there!" + colour.End
- 	clearScreen(3)
- 	room()
+    print colour.Red + "There's no door there!" + colour.End
+    clearScreen(3)
+    room()
 def locked(room):
- 	print colour.Red + "You push and heave, but the door stays locked. Try and find a key." + colour.End
- 	clearScreen(3)
- 	room()
+    print colour.Red + "You push and heave, but the door stays locked. Try and find a key." + colour.End
+    clearScreen(3)
+    room()
 def didntUnderstand(room):
-	print colour.Red, "Sorry, I didn't understand that. Try again." + colour.End
- 	clearScreen(1)
- 	room()
- 	
+    print colour.Red, "Sorry, I didn't understand that. Try again." + colour.End
+    clearScreen(1)
+    room()
+    
 #Make the rooms
 entrance = Room('Entrance', """A cold-floored room. Apart from the empty coat rack, it's scarce. You hear the thunderous rain outside.""", """There is a locked door behind you, and an archway in front of you.""")       
 mainHall = Room('Main Hall', """A dusty chandelier hang precariously from the damp ceiling. Two chairs sit in front of an empty fireplace. There are dust sheets over some furniture, tucked away at the side of the room.""", """There is a door on every wall.""") 
@@ -70,322 +70,322 @@ end = Room('Finish', """Well done! You escaped. To try again, go North, or to le
 
 #Where the magic happens
 def entranceChoice():
-	global startGame
-	if startGame == True:
-		startGame = False
-	else:
-		clearScreen(0)
-	print entrance
-	direction = raw_input(prompt)
+    global startGame
+    if startGame == True:
+        startGame = False
+    else:
+        clearScreen(0)
+    print entrance
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		mainHallChoice()
-	elif direction == 'E':
-		noGo(entranceChoice)
-	elif direction == 'S':
-		if keyThree == True:
-			finishGame()
-		else:
-			locked(entranceChoice)
-	elif direction == 'W':
-		noGo(entranceChoice)
-	else:
-		didntUnderstand(entranceChoice)
+    if direction == 'N':
+        mainHallChoice()
+    elif direction == 'E':
+        noGo(entranceChoice)
+    elif direction == 'S':
+        if keyThree == True:
+            finishGame()
+        else:
+            locked(entranceChoice)
+    elif direction == 'W':
+        noGo(entranceChoice)
+    else:
+        didntUnderstand(entranceChoice)
 
 def mainHallChoice():
-	clearScreen(0)
-	print mainHall
-	direction = raw_input(prompt)
+    clearScreen(0)
+    print mainHall
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		libraryChoice()
-	elif direction == 'E':
-		emptyChoice()
-	elif direction == 'S':
-		entranceChoice()
-	elif direction == 'W':
-		stairChoice()
-	else:
-		didntUnderstand(mainHallChoice)
+    if direction == 'N':
+        libraryChoice()
+    elif direction == 'E':
+        emptyChoice()
+    elif direction == 'S':
+        entranceChoice()
+    elif direction == 'W':
+        stairChoice()
+    else:
+        didntUnderstand(mainHallChoice)
 
 def emptyChoice():
-	clearScreen(0)
-	print empty
-	direction = raw_input(prompt)
+    clearScreen(0)
+    print empty
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		kitchenChoice()
-	elif direction == 'E':
-		noGo(emptyChoice)
-	elif direction == 'S':
-		noGo(emptyChoice)
-	elif direction == 'W':
-		mainHallChoice()
-	else:
-		didntUnderstand(emptyChoice)
+    if direction == 'N':
+        kitchenChoice()
+    elif direction == 'E':
+        noGo(emptyChoice)
+    elif direction == 'S':
+        noGo(emptyChoice)
+    elif direction == 'W':
+        mainHallChoice()
+    else:
+        didntUnderstand(emptyChoice)
 
 def stairChoice():
-	clearScreen(0)
-	print stairs
-	direction = raw_input(prompt)
+    clearScreen(0)
+    print stairs
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		banquetHallChoice()
-	elif direction == 'E':
-		mainHallChoice()
-	elif direction == 'S':
-		noGo(stairChoice)
-	elif direction == 'W':
-		print(colour.Red + 'The stairs collapse, and you fall through a hole, back down to the stairwell.' + colour.End)
-		time.sleep(2)
-		stairChoice()
-	else:
-		didntUnderstand(stairChoice)
+    if direction == 'N':
+        banquetHallChoice()
+    elif direction == 'E':
+        mainHallChoice()
+    elif direction == 'S':
+        noGo(stairChoice)
+    elif direction == 'W':
+        print(colour.Red + 'The stairs collapse, and you fall through a hole, back down to the stairwell.' + colour.End)
+        time.sleep(2)
+        stairChoice()
+    else:
+        didntUnderstand(stairChoice)
 
 def kitchenChoice():
-	clearScreen(0)
-	print kitchen
-	global keyOne
-	global knife
-	direction = raw_input(prompt)
+    clearScreen(0)
+    print kitchen
+    global keyOne
+    global knife
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		if keyOne == True:
-			keyTwoChoice()
-		else:
-			locked(kitchenChoice)
-	elif direction == 'E':
-		noGo(kitchenChoice)
-	elif direction == 'S':
-		emptyChoice()
-	elif direction == 'W':
-		libraryChoice()
-	elif direction.startswith("investigate"):
-		if knife == False:
-			print(colour.Green + "You pick up a knife." + colour.End)
-			time.sleep(2)
-			knife = True
-			kitchenChoice()
-		else:
-			print("You already have a knife - no need for another")
-			time.sleep(3.5)
-			kitchenChoice()
-	else:
-		didntUnderstand(kitchenChoice)
+    if direction == 'N':
+        if keyOne == True:
+            keyTwoChoice()
+        else:
+            locked(kitchenChoice)
+    elif direction == 'E':
+        noGo(kitchenChoice)
+    elif direction == 'S':
+        emptyChoice()
+    elif direction == 'W':
+        libraryChoice()
+    elif direction.startswith("investigate"):
+        if knife == False:
+            print(colour.Green + "You pick up a knife." + colour.End)
+            time.sleep(2)
+            knife = True
+            kitchenChoice()
+        else:
+            print("You already have a knife - no need for another")
+            time.sleep(3.5)
+            kitchenChoice()
+    else:
+        didntUnderstand(kitchenChoice)
 
 def libraryChoice():
-	clearScreen(0)
-	print library
-	direction = raw_input(prompt)
+    clearScreen(0)
+    print library
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		bedroomChoice()
-	elif direction == 'E':
-		kitchenChoice()
-	elif direction == 'S':
-		mainHallChoice()
-	elif direction == 'W':
-		banquetHallChoice()
-	elif direction.startswith("investigate"):
-		print(colour.Bold + "The book has the title 'How to kill a Troll'. The pages are blank." + colour.End)
-		time.sleep(3.5)
-		libraryChoice()
-	else:
-		didntUnderstand(libraryChoice)
+    if direction == 'N':
+        bedroomChoice()
+    elif direction == 'E':
+        kitchenChoice()
+    elif direction == 'S':
+        mainHallChoice()
+    elif direction == 'W':
+        banquetHallChoice()
+    elif direction.startswith("investigate"):
+        print(colour.Bold + "The book has the title 'How to kill a Troll'. The pages are blank." + colour.End)
+        time.sleep(3.5)
+        libraryChoice()
+    else:
+        didntUnderstand(libraryChoice)
 
 def banquetHallChoice():
-	clearScreen(0)
-	print banquetHall
-	direction = raw_input(prompt)
+    clearScreen(0)
+    print banquetHall
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		studyChoice()
-	elif direction == 'E':
-		libraryChoice()
-	elif direction == 'S':
-		stairChoice()
-	elif direction == 'W':
-		toiletChoice()
-	else:
-		didntUnderstand(banquetHallChoice)
+    if direction == 'N':
+        studyChoice()
+    elif direction == 'E':
+        libraryChoice()
+    elif direction == 'S':
+        stairChoice()
+    elif direction == 'W':
+        toiletChoice()
+    else:
+        didntUnderstand(banquetHallChoice)
 
 def toiletChoice():
-	clearScreen(0)
-	global keyTwo
-	print toilet
-	direction = raw_input(prompt)
+    clearScreen(0)
+    global keyTwo
+    print toilet
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		trollChoice()
-	elif direction == 'E':
-		banquetHallChoice()
-	elif direction == 'S':
-		noGo(toiletChoice)
-	elif direction == 'W':
-		if keyTwo == True:
-			keyThreeChoice()
-		else:
-			locked(toiletChoice)
-	else:
-		didntUnderstand(toiletChoice)
+    if direction == 'N':
+        trollChoice()
+    elif direction == 'E':
+        banquetHallChoice()
+    elif direction == 'S':
+        noGo(toiletChoice)
+    elif direction == 'W':
+        if keyTwo == True:
+            keyThreeChoice()
+        else:
+            locked(toiletChoice)
+    else:
+        didntUnderstand(toiletChoice)
 
 def keyThreeChoice():
-	clearScreen(0)
-	global keyThree
-	print key3
-	keyThree = True
-	direction = raw_input(prompt)
+    clearScreen(0)
+    global keyThree
+    print key3
+    keyThree = True
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		noGo(keyThreeChoice)
-	elif direction == 'E':
-		toiletChoice()
-	elif direction == 'S':
-		noGo(keyThreeChoice)
-	elif direction == 'W':
-		noGo(keyThreeChoice)
-	else:
-		didntUnderstand(keyThreeChoice)
+    if direction == 'N':
+        noGo(keyThreeChoice)
+    elif direction == 'E':
+        toiletChoice()
+    elif direction == 'S':
+        noGo(keyThreeChoice)
+    elif direction == 'W':
+        noGo(keyThreeChoice)
+    else:
+        didntUnderstand(keyThreeChoice)
 
 def keyTwoChoice():
-	clearScreen(0)
-	global keyTwo
-	print key2
-	keyTwo = True
-	direction = raw_input(prompt)
+    clearScreen(0)
+    global keyTwo
+    print key2
+    keyTwo = True
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		noGo(keyTwoChoice)
-	elif direction == 'E':
-		noGo(keyTwoChoice)
-	elif direction == 'S':
-		kitchenChoice()
-	elif direction == 'W':
-		bedroomChoice()
-	else:
-		didntUnderstand(keyTwoChoice)
+    if direction == 'N':
+        noGo(keyTwoChoice)
+    elif direction == 'E':
+        noGo(keyTwoChoice)
+    elif direction == 'S':
+        kitchenChoice()
+    elif direction == 'W':
+        bedroomChoice()
+    else:
+        didntUnderstand(keyTwoChoice)
 
 def bedroomChoice():
-	clearScreen(0)
-	print bedroom
-	direction = raw_input(prompt)
+    clearScreen(0)
+    print bedroom
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		noGo(bedroomChoice)
-	elif direction == 'E':
-		if keyOne == True:
-			keyTwoChoice()
-		else:
-			locked(bedroomChoice)
-	elif direction == 'S':
-		libraryChoice()
-	elif direction == 'W':
-		studyChoice()
-	else:
-		didntUnderstand(bedroomChoice)
+    if direction == 'N':
+        noGo(bedroomChoice)
+    elif direction == 'E':
+        if keyOne == True:
+            keyTwoChoice()
+        else:
+            locked(bedroomChoice)
+    elif direction == 'S':
+        libraryChoice()
+    elif direction == 'W':
+        studyChoice()
+    else:
+        didntUnderstand(bedroomChoice)
 
 def studyChoice():
-	clearScreen(0)
-	print study
-	direction = raw_input(prompt)
+    clearScreen(0)
+    print study
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		noGo(studyChoice)
-	elif direction == 'E':
-		bedroomChoice()
-	elif direction == 'S':
-		banquetHallChoice()
-	elif direction == 'W':
-		trollChoice()
-	elif direction.startswith("investigate"):
-		print('The paper is a note. It says:')
-		print playerName + ", There's a troll in the room to the West that will kill you, unless you have a weapon. \nLots of Love,\nMatrix\nxXx"
-		time.sleep(4)
-		studyChoice()
-	else:
-		didntUnderstand(studyChoice)
+    if direction == 'N':
+        noGo(studyChoice)
+    elif direction == 'E':
+        bedroomChoice()
+    elif direction == 'S':
+        banquetHallChoice()
+    elif direction == 'W':
+        trollChoice()
+    elif direction.startswith("investigate"):
+        print('The paper is a note. It says:')
+        print playerName + ", There's a troll in the room to the West that will kill you, unless you have a weapon. \nLots of Love,\nMatrix\nxXx"
+        time.sleep(4)
+        studyChoice()
+    else:
+        didntUnderstand(studyChoice)
 
 def trollChoice():
-	clearScreen(0)
-	global trollAlive
-	global knife
-	global keyOne
+    clearScreen(0)
+    global trollAlive
+    global knife
+    global keyOne
 
-	if trollAlive == True:
-		print troll
-		direction = raw_input(prompt)
+    if trollAlive == True:
+        print troll
+        direction = raw_input(prompt)
 
-		if direction == 'N':
-			clearScreen(0.5)
-			if knife == True:
-				print("You fight the troll with your knife! He dies, and you remove a key from his neck. It has the word 'kitchen' on it...")
-				keyOne = True
-				trollAlive = False 
-				time.sleep(2)
-				trollDead()
-			else:
-				print(" You didn't have a weapon! The troll kills you. \n\n" + colour.Bold, 'Try again? (y/n)' + colour.End)
-				endGame  = raw_input(prompt)
-				if endGame == 'n':
-					exitGame()
-				else:
-					restartGame()
-		elif direction == 'E':
-			bedroomChoice()
-		elif direction == 'S':
-			toiletChoice()
-		elif direction == 'W':
-			noGo(trollChoice)
-		else:
-			didntUnderstand(trollChoice)
-	else:
-		trollDead()
+        if direction == 'N':
+            clearScreen(0.5)
+            if knife == True:
+                print("You fight the troll with your knife! He dies, and you remove a key from his neck. It has the word 'kitchen' on it...")
+                keyOne = True
+                trollAlive = False 
+                time.sleep(2)
+                trollDead()
+            else:
+                print(" You didn't have a weapon! The troll kills you. \n\n" + colour.Bold, 'Try again? (y/n)' + colour.End)
+                endGame  = raw_input(prompt)
+                if endGame == 'n':
+                    exitGame()
+                else:
+                    restartGame()
+        elif direction == 'E':
+            bedroomChoice()
+        elif direction == 'S':
+            toiletChoice()
+        elif direction == 'W':
+            noGo(trollChoice)
+        else:
+            didntUnderstand(trollChoice)
+    else:
+        trollDead()
 
 def trollDead():
-	clearScreen(0)
-	print deadTroll
-	direction = raw_input(prompt)
+    clearScreen(0)
+    print deadTroll
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		noGo(trollDead)
-	elif direction == 'E':
-		studyChoice()
-	elif direction == 'S':
-		toiletChoice()
-	elif direction == 'W':
-		noGo(trollDead)
-	else:
-		didntUnderstand(trollDead)	
+    if direction == 'N':
+        noGo(trollDead)
+    elif direction == 'E':
+        studyChoice()
+    elif direction == 'S':
+        toiletChoice()
+    elif direction == 'W':
+        noGo(trollDead)
+    else:
+        didntUnderstand(trollDead)  
 
 def exitGame():
-	clearScreen(0)
-	print('Bye!')
-	time.sleep(2)
+    clearScreen(0)
+    print('Bye!')
+    time.sleep(2)
 
 def restartGame():
-	keyOne = False
-	keyTwo = False
-	keyThree = False
-	startGame = True
-	trollAlive = True
-	knife = False
-	entranceChoice()
+    keyOne = False
+    keyTwo = False
+    keyThree = False
+    startGame = True
+    trollAlive = True
+    knife = False
+    entranceChoice()
 
 def finishGame():
-	clearScreen(0)
-	print end
-	direction = raw_input(prompt)
+    clearScreen(0)
+    print end
+    direction = raw_input(prompt)
 
-	if direction == 'N':
-		restartGame()
-	elif direction == 'E':
-		noGo(finishGame)
-	elif direction == 'S':
-		exitGame()
-	elif direction == 'W':
-		noGo(finishGame)
-	else:
-		didntUnderstand(finishGame)	
+    if direction == 'N':
+        restartGame()
+    elif direction == 'E':
+        noGo(finishGame)
+    elif direction == 'S':
+        exitGame()
+    elif direction == 'W':
+        noGo(finishGame)
+    else:
+        didntUnderstand(finishGame) 
 clearScreen(0)
 print colour.Bold, colour.Title, "Matrix's Text Adventure\n", colour.End
 print colour.Bold, 'Commands:\n', colour.End, '\n N or E or S or W - Travel North/East/South/West\n investigate [object] - Investigate an object'
