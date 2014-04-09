@@ -6,7 +6,7 @@ def clearScreen(wait):
 	time.sleep(wait)
 	os.system('clear') #Change to 'cls' if on Windows,but leave as-is if on Mac. 
 
-	
+
 class colour:
     Title = '\033[94m'
     Green = '\033[92m'
@@ -35,15 +35,15 @@ knife = False
 
 
 def noGo(room):
- 	print colour.Red, "There's no door there!", colour.End
+ 	print colour.Red + "There's no door there!" + colour.End
  	clearScreen(3)
  	room()
 def locked(room):
- 	print colour.Red, "You push and heave, but the door stays locked. Try and find a key.", colour.End
+ 	print colour.Red + "You push and heave, but the door stays locked. Try and find a key." + colour.End
  	clearScreen(3)
  	room()
 def didntUnderstand(room):
-	print colour.Red, "Sorry, I didn't understand that. Try again.", colour.End
+	print colour.Red + "Sorry, I didn't understand that. Try again." + colour.End
  	clearScreen(1)
  	room()
  	
@@ -74,7 +74,7 @@ def entranceChoice():
 		clearScreen(0)
 	print entrance
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		mainHallChoice()
 	elif direction == 'E':
@@ -93,7 +93,7 @@ def mainHallChoice():
 	clearScreen(0)
 	print mainHall
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		libraryChoice()
 	elif direction == 'E':
@@ -109,7 +109,7 @@ def emptyChoice():
 	clearScreen(0)
 	print empty
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		kitchenChoice()
 	elif direction == 'E':
@@ -125,7 +125,7 @@ def stairChoice():
 	clearScreen(0)
 	print stairs
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		banquetHallChoice()
 	elif direction == 'E':
@@ -145,7 +145,7 @@ def kitchenChoice():
 	global keyOne
 	global knife
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		if keyOne == True:
 			keyTwoChoice()
@@ -174,7 +174,7 @@ def libraryChoice():
 	clearScreen(0)
 	print library
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		bedroomChoice()
 	elif direction == 'E':
@@ -184,7 +184,7 @@ def libraryChoice():
 	elif direction == 'W':
 		banquetHallChoice()
 	elif direction.startswith("investigate"):
-		print(colour.Bold, "The book has the title 'How to kill a Troll'. The pages are blank.", colour.End)
+		print(colour.Bold + "The book has the title 'How to kill a Troll'. The pages are blank." + colour.End)
 		time.sleep(3.5)
 		libraryChoice()
 	else:
@@ -194,7 +194,7 @@ def banquetHallChoice():
 	clearScreen(0)
 	print banquetHall
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		studyChoice()
 	elif direction == 'E':
@@ -211,7 +211,7 @@ def toiletChoice():
 	global keyTwo
 	print toilet
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		trollChoice()
 	elif direction == 'E':
@@ -232,7 +232,7 @@ def keyThreeChoice():
 	print key3
 	keyThree = True
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		noGo(keyThreeChoice)
 	elif direction == 'E':
@@ -243,14 +243,14 @@ def keyThreeChoice():
 		noGo(keyThreeChoice)
 	else:
 		didntUnderstand(keyThreeChoice)
-		
+
 def keyTwoChoice():
 	clearScreen(0)
 	global keyTwo
 	print key2
 	keyTwo = True
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		noGo(keyTwoChoice)
 	elif direction == 'E':
@@ -266,7 +266,7 @@ def bedroomChoice():
 	clearScreen(0)
 	print bedroom
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		noGo(bedroomChoice)
 	elif direction == 'E':
@@ -285,7 +285,7 @@ def studyChoice():
 	clearScreen(0)
 	print study
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		noGo(studyChoice)
 	elif direction == 'E':
@@ -307,11 +307,11 @@ def trollChoice():
 	global trollAlive
 	global knife
 	global keyOne
-	
+
 	if trollAlive == True:
 		print troll
 		direction = raw_input(prompt)
-	
+
 		if direction == 'N':
 			clearScreen(0.5)
 			if knife == True:
@@ -321,7 +321,7 @@ def trollChoice():
 				time.sleep(2)
 				trollDead()
 			else:
-				print(" You didn't have a weapon! The troll kills you. \n\n", colour.Bold, 'Try again? (y/n)', colour.End)
+				print(" You didn't have a weapon! The troll kills you. \n\n" + colour.Bold, 'Try again? (y/n)' + colour.End)
 				endGame  = raw_input(prompt)
 				if endGame == 'n':
 					exitGame()
@@ -342,7 +342,7 @@ def trollDead():
 	clearScreen(0)
 	print deadTroll
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		noGo(trollDead)
 	elif direction == 'E':
@@ -353,7 +353,7 @@ def trollDead():
 		noGo(trollDead)
 	else:
 		didntUnderstand(trollDead)	
-		
+
 def exitGame():
 	clearScreen(0)
 	print('Bye!')
@@ -372,7 +372,7 @@ def finishGame():
 	clearScreen(0)
 	print end
 	direction = raw_input(prompt)
-	
+
 	if direction == 'N':
 		restartGame()
 	elif direction == 'E':
@@ -396,5 +396,3 @@ time.sleep(4)
 
 #Start it!
 entranceChoice()
-
-
