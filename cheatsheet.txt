@@ -32,5 +32,28 @@ L1, L2, L3 are locks with corresponding keys.
 
 
 LEVEL TWO
+
 Taxi driver will shoot you unless you pay him - don't get in without money.
+
+Ghost Town Map
++–––––––––+ +–––––––––+ +–––––––––+                 
+|         | |         | |         |                N 
+|  Clothes| |  Bakery | | Petrol  |              W   E
+|  Shop   | |         | | Station |                S 
+|         | |         | |         |    X            
++–––––––––+ +–––––––––+ +–––––––––+   XX            
+                                     XXXXXXXXX Start
++–––––––––+ +–––––––––+ +–––––––––+   XX            
+|         | |         | |         |    X            
+| Super   | | Town    | | Bank    |                 
+| Market  | |  Square | |         |                 
+|         | |         | |         |                 
++–––––––––+ +–––––––––+ +–––––––––+                 
+                                                    
++–––––––––+ +–––––––––+ +–––––––––+                 
+|         | |         | |         |                 
+|  Train  | | Library | | Car     |                 
+|  Station| |         | | Park    |                 
+|         | |         | |         |                 
++–––––––––+ +–––––––––+ +–––––––––+                 
 
