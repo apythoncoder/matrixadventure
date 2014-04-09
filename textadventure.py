@@ -1,12 +1,15 @@
 import os
 import time
+import colorama  
+colorama.init()
 
 #Make a clear screen with timer.
 def clearScreen(wait):
 	time.sleep(wait)
-	os.system('clear') #Change to 'cls' if on Windows,but leave as-is if on Mac. 
-
-
+	if sys.platform == 'win32' or  sys.platform == 'cygwin'
+		os.system('cls')
+	else:
+		os.system('clear')
 class colour:
     Title = '\033[94m'
     Green = '\033[92m'
@@ -43,7 +46,7 @@ def locked(room):
  	clearScreen(3)
  	room()
 def didntUnderstand(room):
-	print colour.Red + "Sorry, I didn't understand that. Try again." + colour.End
+	print colour.Red, "Sorry, I didn't understand that. Try again." + colour.End
  	clearScreen(1)
  	room()
  	
