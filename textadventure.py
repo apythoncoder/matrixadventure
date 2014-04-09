@@ -1,9 +1,11 @@
 import os
 import time
 
+#Make a clear screen with timer.
 def clearScreen(wait):
 	time.sleep(wait)
 	os.system('clear') #Change to 'cls' if on Windows,but leave as-is if on Mac. 
+
 	
 class colour:
     Title = '\033[94m'
@@ -12,6 +14,7 @@ class colour:
     Bold = "\033[1m" 
     End = '\033[0m'
 
+#Setup class for the rooms. Make output consistent
 class Room(object):
 
     def __init__(self, name, description, options):
@@ -30,6 +33,7 @@ startGame = True
 trollAlive = True
 knife = False
 
+
 def noGo(room):
  	print colour.Red, "There's no door there!", colour.End
  	clearScreen(3)
@@ -42,6 +46,8 @@ def didntUnderstand(room):
 	print colour.Red, "Sorry, I didn't understand that. Try again.", colour.End
  	clearScreen(1)
  	room()
+ 	
+#Make the rooms
 entrance = Room('Entrance', """A cold-floored room. Apart from the empty coat rack, it's scarce. You hear the thunderous rain outside.""", """There is a locked door behind you, and an archway in front of you.""")       
 mainHall = Room('Main Hall', """A dusty chandelier hang precariously from the damp ceiling. Two chairs sit in front of an empty fireplace. There are dust sheets over some furniture, tucked away at the side of the room.""", """There is a door on every wall.""") 
 empty = Room('An Empty Room', """The steady drip of the rain seeping through the ceiling is the only thing in this room. You hear a loud creaking in the distance. Lightning flashes. You are not alone.""", """To your North and West there is a door.""")
@@ -55,10 +61,11 @@ key2 = Room('Key Room', """You've found a key! It has the word 'Toilet' on it.""
 bedroom = Room('Bedroom', """A large, Queen-sized bed is in the centre of the room. It has no sheets, only a bare mattress. It smells of mould. You vomit a little.""", """There is a locked door to your East. The doors to the South and West are open.""")
 study = Room('Study', """An ornate wooden desk stands infront of you. It has scratches all over it. There is a sheet of paper on its surface.""", """There are doors all around you, apart from North.""")
 troll = Room('Troll', """The smell hits you first. The smell of rotting meat. Of human flesh. You look up and see it. The thing in front of you looks inhuman, but it seems intelligent. It moves towards you...""", """Run out the door behind you, or stay and fight!""") 
-
+#Special rooms
 deadTroll = Room('Troll', """The troll is dead! Go escape!""", """There are doors to the South and East.""")
 end = Room('Finish', """Well done! You escaped. To try again, go North, or to leave, go South down the gravel path.""", """Thanks for playing""")
 
+#Where the magic happens
 def entranceChoice():
 	global startGame
 	if startGame == True:
@@ -386,6 +393,8 @@ clearScreen(0.5)
 
 print """You come to your senses. Reaching up to feel your head, you find a large lump. You have an intense headache, but it passes as your vision clears. You're lying on your back. It's dark, and the only source of light is the full moon you can see through a high window. Your wrists are raw, as if they had been rubbed by a thick rope. You stand up shakily onto your feet. In the distance, you hear thunder."""
 time.sleep(4)
+
+#Start it!
 entranceChoice()
 
 
