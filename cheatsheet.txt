@@ -2,7 +2,9 @@ Cheat-sheet for Matrix's Text Adventure
 
 Commands: N, E, S, W, Take [object], Attack, Investigate [object]
 
-Crudely drawn Map:
+LEVEL ONE
+
+Crudely drawn upside-down Map:
 
 L1, L2, L3 are locks with corresponding keys.
 
@@ -19,11 +21,16 @@ L1, L2, L3 are locks with corresponding keys.
 +––––––––––––––––––––––––––––––––––––––––––––––---–––
 |        |         |         |         |         |         
 | Kitchen |Library  |  Banquet |  Toilet L2  Key3   |         
-|        |         |   Hall  |         |         |         
-|        |         |         |         |         |       
+|        |         |   Hall  |    with  |         |         
+|        |         |         |    £20   |         |       
 +––– L1 ––––––––––––––––––––––––––––––––––––––––---–––
 |        |         |         |         |        
 | Key2   L1 Bedroom | Study    |  Troll   |         
 |        |         |         |with key 1|      
 |        |         |         |         |   
 +–––––––––––––––––––––––––––––––––––––––––––
+
+
+LEVEL TWO
+Taxi driver will shoot you unless you pay him - don't get in without money.
+
