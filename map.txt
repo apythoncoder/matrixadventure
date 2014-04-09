@@ -1,0 +1,29 @@
+Cheat-sheet for Matrix's Text Adventure
+
+Commands: N, E, S, W, Take [object], Attack, Investigate [object]
+
+Crudely drawn Map:
+
+L1, L2, L3 are locks with corresponding keys.
+
+	    	Finish  
+		 +––––L3––––+                                                                 
+         |         |        S                                                         
+         |  Start  |      E    W                                                     
+         |         |        N                                                         
+         |         |                                                                
++––––––––––––––––––––––––––––+–––
+|        |         |         |       
+| Empty   |Main Hall|  Caved   |            
+|        |         |in stairs |           
++––––––––––––––––––––––––––––––––––––––––––––––---–––
+|        |         |         |         |         |         
+| Kitchen |Library  |  Banquet |  Toilet L2  Key3   |         
+|        |         |   Hall  |         |         |         
+|        |         |         |         |         |       
++––– L1 ––––––––––––––––––––––––––––––––––––––––---–––
+|        |         |         |         |        
+| Key2   L1 Bedroom | Study    |  Troll   |         
+|        |         |         |with key 1|      
+|        |         |         |         |   
++–––––––––––––––––––––––––––––––––––––––––––
