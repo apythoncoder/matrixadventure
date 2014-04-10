@@ -1,8 +1,8 @@
 import os
 import time
-import colorama  
+import sys
+import colorama
 colorama.init()
-
 #Make a clear screen with timer.
 def clearScreen(wait):
     time.sleep(wait)
