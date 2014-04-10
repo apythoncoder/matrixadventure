@@ -6,7 +6,7 @@ colorama.init()
 #Make a clear screen with timer.
 def clearScreen(wait):
     time.sleep(wait)
-    if sys.platform == 'win32' or  sys.platform == 'cygwin'
+    if sys.platform == 'win32' or  sys.platform == 'cygwin':
         os.system('cls')
     else:
         os.system('clear')
